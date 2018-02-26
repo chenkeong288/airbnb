@@ -1,0 +1,13 @@
+<h1>Your reservation is complete.</h1>
+
+Check-in: <%= @reservation.start_date%> <br/>
+Check-out: <%= @reservation.end_date%> <br/>
+
+Number of Guests: <%= @reservation.number_of_guests%> <br/>
+
+
+<%= link_to "Show All Listings", listings_path %>
+
+<%= link_to "Show My Reservations", user_reservations_path %>
+
+<%= link_to "Proceed to payment", new_payment_path %>

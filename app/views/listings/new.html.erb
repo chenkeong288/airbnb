@@ -1,5 +1,8 @@
-<h1>New Posting</h1>
-
-<input type="text" name="user_posting">
-<input type="submit" name="submit">
-
+<%= form_for @listing, :html => {:multipart => true} do |f|%>
+  
+	Title: <%= f.text_field :title%> <br/>
+	Description: <%= f.text_field :description %> <br/>
+	Location: <%= f.text_field :location %> <br/>
+  <%= f.file_field :images, multiple: true%> <br/>
+	<input type="submit" name="submit">
+<%end%>

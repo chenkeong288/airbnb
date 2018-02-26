@@ -1,2 +1,50 @@
-<h1>Home Listings</h1>
+<% flash.each do |key, value| %>
+      <div class="alert alert-success <%= flash_class(key) %> "> <%= value %> </div>
+<% end %>
+
+<h1>
+	<div class="h1-class"> Explore the world with MyAirBnb</div>
+</h1>
+
+<div class="menu-button">
+	<%= link_to "Post New Home as Host", new_listing_url, class:"post-new-button btn btn-outline-primary btn-lg" %>
+	<%= link_to "About MyAirBnb", nil, class:"btn btn-outline-secondary btn-lg" %>
+	<%= link_to "Help", nil, class:"btn btn-outline-secondary btn-lg" %>
+</div>
+
+<div class="container">
+	<div class="row">
+
+		<%@listing.each do |list|%>
+
+			<div class="col-4">
+				<div class="individual-listing-container">
+					
+
+					<%list.images.each do |img|%>
+						<p><%= image_tag img.url, class:"rounded mx-auto d-block img" %></p>
+					<%end%>
+
+
+					<p class = "user-input" ><%=list.title%></p>
+					<p class = "user-input" ><%=list.location%></p>
+
+					<%= link_to "Show", listing_path(list), class:"btn btn-outline-dark" %>                 
+
+					<%= link_to "Update/Edit", edit_listing_path(list), class:"btn btn-outline-dark" %>
+							
+				  <%= link_to "Delete", listing_path(list), class:"btn btn-outline-danger",                                           
+						method: :delete,
+						data: {confirm: "Are you sure?"}
+					%>
+
+				</div>
+			</div> 
+		<%end%>
+	</div>
+</div>
+
+	
+<p><%= paginate @listing %></p>																			<!--page button-->
+
 

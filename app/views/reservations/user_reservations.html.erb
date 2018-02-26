@@ -1,0 +1,7 @@
+<% @user_reservations.each do |res| %>
+  Title: <%= res.listing.title%><br/>
+  Location: <%= res.listing.location%><br/>
+  Check-in: <%= res.start_date%><br/>
+  Check-out: <%= res.end_date%><br/>
+  Headcount: <%= res.number_of_guests%><br/>
+<% end %>
