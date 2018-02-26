@@ -1,0 +1,17 @@
+<div class="container show-container">
+  <div class="row">
+    <div class="col-4">
+      <% @listing.images.each do |img|%> 
+        <%= image_tag img.url, class:"show-image" %> <br/>          <!--image_tag have to be written on the code line to display the image-->
+      <%end%>
+    </div>
+
+    <div class="col-8">
+      <%= @listing.description%> <br/>
+    </div>
+ 
+      <%= link_to "Show Home Listings", listings_path, class:"btn btn-outline-primary show-btn" %>
+      <%= link_to "Reserve Me Now", new_listing_reservation_path(@listing.id), class:"btn btn-outline-info show-btn" %>
+
+  </div>
+</div>

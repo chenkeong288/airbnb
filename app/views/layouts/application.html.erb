@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Airbnb</title>
-    <%= csrf_meta_tags %>
+<head>
+  <%= javascript_include_tag 'application' %>
+  
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>       <!--bootstrap-->
+  <%= csrf_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <!-- Link to code HTML/CSS code and JS code for interactive flatpickr calendar ui -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">   
+       
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-  <body>
-    <%= yield %>
-  </body>
+</head>
+<body>
+  <div id="header">
+    <% if signed_in? -%>
+      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+    <% else -%>
+      <%= link_to t(".sign_in"), sign_in_path %>
+    <% end -%>
+  </div>
+
+  <%= yield %>
+
+
+</body>
 </html>
+
+
