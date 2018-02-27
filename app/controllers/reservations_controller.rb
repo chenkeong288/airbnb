@@ -13,18 +13,25 @@ class ReservationsController < ApplicationController
   end
 
 
+
   def create
     @reservation = current_user.reservations.new(reservation_params)
-    
+    @listing = Listing.find(params[:listing_id])
     @reservation.listing_id = params[:listing_id]         # to store listing id into listing_id column
       # @reservation.listing_id = @listing.id             # alternative way to store listing id into listing_id column
     
     if @reservation.save
-      redirect_to [@reservation.listing, @reservation]                                    # show (rails know @reservation.listing refers to listing id and @reservation refers to reservation id)
-      # redirect_to listing_reservation_path(@reservation.listing.id, @reservation.id)    # alternative way to show
+      
+      host = User.find(@listing.user_id)
+
+      ReservationMailer.booking_email(current_user, host, @listing.id, @reservation.id).deliver_later      # Code to call booking_email method under the ReservationMailer class
+
+      redirect_to [@reservation.listing, @reservation]                                                     # show (rails know @reservation.listing refers to listing id and @reservation refers to reservation id)
+      # redirect_to listing_reservation_path(@reservation.listing.id, @reservation.id)                     # alternative way to show
     else 
       redirect_to new_listing_reservation_path(@listing)
-    end    
+    end   
+
   end
 
 

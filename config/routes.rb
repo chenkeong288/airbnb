@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
 
-  get "/user_reservations" => "reservations#user_reservations", as:  "user_reservations"
+  get "/user_reservations" => "reservations#user_reservations", as:  "user_reservations"          # self-written route
   
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
