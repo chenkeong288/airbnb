@@ -8,4 +8,8 @@ class Listing < ApplicationRecord
 
   mount_uploaders :images, AvatarUploader
 	
+  scope :title, -> (input_title) { where("title like?", "#{input_title}%") }
+  scope :location, -> (input_location) { where("location like?", "#{input_location}")}
+  scope :description, -> (input_description) { where("description ILIKE ?", "%#{input_description}%") }
+
 end

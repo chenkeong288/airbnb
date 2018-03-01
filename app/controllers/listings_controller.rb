@@ -1,6 +1,17 @@
 class ListingsController < ApplicationController
 
 
+	def search
+		@listings = Listing.all
+
+		filtering_params.each do |key,value|
+			@search_listings = @listings.public_send(key,value) if value.present?
+		end
+
+	end
+
+
+	# Home
 	def index
 		@listing = Listing.order(created_at: :asc).page params[:page]
 	end
@@ -21,7 +32,7 @@ class ListingsController < ApplicationController
 			redirect_to @listing #show 																# redirect to show this particular post by the user only
 		else
 			redirect_to new_listing_path															# new_listing is a prefix from route
-		end 
+		end
 	end
 
 
@@ -51,12 +62,16 @@ class ListingsController < ApplicationController
 
 
 
-
 	private
+
   #strong parameter
 	def listing_params																						#to accept user posted input confidentially
     params.require(:listing).permit(:title, :description, :location, {images: []})
   end
 
+
+  def filtering_params
+  	params.slice(:description)
+  end
 
 end

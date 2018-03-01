@@ -1,6 +1,14 @@
-<% flash.each do |key, value| %>
+<!-- Payment flash -->
+<% flash.each do |key, value| %>																														
       <div class="alert alert-success <%= flash_class(key) %> "> <%= value %> </div>
 <% end %>
+
+<!-- Search field -->
+<%= form_tag ("/listings/search") do %>
+	<%= text_field_tag "description" %>
+	<%= submit_tag "Search" %> 
+<%end%>
+
 
 <h1>
 	<div class="h1-class"> Explore the world with MyAirBnb</div>
