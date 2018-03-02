@@ -4,8 +4,14 @@
 <% end %>
 
 <!-- Search field -->
-<%= form_tag ("/listings/search") do %>
-	<%= text_field_tag "description" %>
+<%= form_tag search_path do %>
+	
+	<!-- Without pg_search gem -->
+	<%#= text_field_tag "title", nil, placeholder: "Title" %>
+	<%#= text_field_tag "location",nil, placeholder: "Location" %>
+	<%#= text_field_tag "description",nil, placeholder: "Description" %>
+
+	<%= text_field_tag "user_search_input", nil, placeholder: "Search" %>
 	<%= submit_tag "Search" %> 
 <%end%>
 
