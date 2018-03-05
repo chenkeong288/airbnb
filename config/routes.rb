@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   end
 
 
-  get "/user_reservations" => "reservations#user_reservations", as:  "user_reservations"          # self-written route
-  post "listings/search" => "listings#search", as: "search"
+  get "/user_reservations" => "reservations#user_reservations", as:  "user_reservations"          # reservation route
+  post "listings/search" => "listings#search", as: "search"                                       # search route
+  post "listings/autocomplete" => "listings#autocomplete", as: "autocomplete"                                  # autocomplete route
+
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

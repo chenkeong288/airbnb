@@ -18,6 +18,16 @@ class Listing < ApplicationRecord
   include PgSearch
   pg_search_scope :search_all, :against => [:title, :location, :description]
 
+  
 
+  #autocomplete
+  def self.search_title(query)
+    where("title ILIKE :title", title: "%#{query}%").map do |record|
+      record.title 
+    end
+  end
+
+                          
 end
+
 

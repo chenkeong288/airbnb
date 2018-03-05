@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
 
 
 	def new
-		if signed_in? 																							# current_user represent currently logged-in user
+		if signed_in? 
 			@listing = Listing.new
 		else
 			redirect_to listings_path
@@ -62,6 +62,12 @@ class ListingsController < ApplicationController
 		# Using pg_search gem
 		@search = @listings.search_all(params[:user_search_input])
 	end
+	
+
+	def autocomplete
+    title = Listing.all.search_title(params[:user_search_input])
+    render json: title
+	end
 
 
 
@@ -70,8 +76,8 @@ class ListingsController < ApplicationController
 	private
 
   #strong parameter
-	def listing_params																						#to accept user posted input confidentially
-    params.require(:listing).permit(:title, :description, :location, {images: []})
+	def listing_params																																		#to accept user posted input confidentially
+    params.require(:listing).permit(:title, :location, :description, :price, {images: []})
   end
 
 

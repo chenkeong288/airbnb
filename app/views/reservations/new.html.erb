@@ -1,7 +1,7 @@
 <%= form_for [@listing, @reservation] do |r| %>
   Start date: <%= r.text_field :start_date, class:"start" %>
   End date: <%= r.text_field :end_date, class:"end" %>
-  Number of Guest: <%= r.select :number_of_guests, [1,2,3] %> 
+  Number of Guest: <%= r.select :number_of_guests, [1,2,3,4,5,6] %> 
 
   <%=  r.submit "Reserve Now" %> 
 <%end%>
