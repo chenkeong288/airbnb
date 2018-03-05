@@ -1,16 +1,6 @@
 class ListingsController < ApplicationController
 
 
-	def search
-		@listings = Listing.all
-
-		filtering_params.each do |key,value|
-			@search_listings = @listings.public_send(key,value) if value.present?
-		end
-
-	end
-
-
 	# Home
 	def index
 		@listing = Listing.order(created_at: :asc).page params[:page]
@@ -18,7 +8,7 @@ class ListingsController < ApplicationController
 
 
 	def new
-		if signed_in? 																							# current_user represent currently logged-in user
+		if signed_in? 
 			@listing = Listing.new
 		else
 			redirect_to listings_path
@@ -61,17 +51,38 @@ class ListingsController < ApplicationController
 	end
 
 
+	def search
+		@listings = Listing.all																															#Note: Condition precedence - user inout on the last search bar will take precedence in the search filtering
+		
+		# Without pg_search gem
+		# filtering_params(params).each do |key,value|
+		# 	@search = @listings.public_send(key,value) if value.present?
+		# end
+
+		# Using pg_search gem
+		@search = @listings.search_all(params[:user_search_input])
+	end
+	
+
+	def autocomplete
+    title = Listing.all.search_title(params[:user_search_input])
+    render json: title
+	end
+
+
+
+
 
 	private
 
   #strong parameter
-	def listing_params																						#to accept user posted input confidentially
-    params.require(:listing).permit(:title, :description, :location, {images: []})
+	def listing_params																																		#to accept user posted input confidentially
+    params.require(:listing).permit(:title, :location, :description, :price, {images: []})
   end
 
 
-  def filtering_params
-  	params.slice(:description)
+  def filtering_params(params)
+  	params.slice(:title, :location, :description)
   end
 
 end

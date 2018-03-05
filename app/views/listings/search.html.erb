@@ -1,3 +1,7 @@
-<% @search_listings.each do |search_result| %>
+<% @search.each do |search_result| %>
+  <p><%=search_result.title%></p>
+  <p><%=search_result.location%></p>
   <p><%=search_result.description%></p>
 <%end%>
+
+

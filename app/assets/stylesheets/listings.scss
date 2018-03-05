@@ -49,8 +49,12 @@ h1 {
   font-size: 0.5em
 }
 
-.user-input, .btn {
+.user-input, .price, .btn {
   margin-left: 10px;
+}
+
+.price {
+  font-size: 0.85em;
 }
 
 .menu-button {

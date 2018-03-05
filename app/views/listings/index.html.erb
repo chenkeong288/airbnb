@@ -3,11 +3,22 @@
       <div class="alert alert-success <%= flash_class(key) %> "> <%= value %> </div>
 <% end %>
 
+
+
 <!-- Search field -->
-<%= form_tag ("/listings/search") do %>
-	<%= text_field_tag "description" %>
+<%= form_tag search_path do %>
+	
+	<!-- Without pg_search gem -->
+	<%#= text_field_tag "title", nil, placeholder: "Title" %>
+	<%#= text_field_tag "location",nil, placeholder: "Location" %>
+	<%#= text_field_tag "description",nil, placeholder: "Description" %>
+
+	<%= text_field_tag "user_search_input", nil, placeholder: "Search", list: "list" %>
+	<datalist id ="list"></datalist>
+
 	<%= submit_tag "Search" %> 
 <%end%>
+
 
 
 <h1>
@@ -26,7 +37,7 @@
 		<%@listing.each do |list|%>
 
 			<div class="col-4">
-				<div class="individual-listing-container">
+				<div class="individual-listing-container">	
 					
 
 					<%list.images.each do |img|%>
@@ -36,6 +47,7 @@
 
 					<p class = "user-input" ><%=list.title%></p>
 					<p class = "user-input" ><%=list.location%></p>
+					<p class = "price" > RM <%=list.price.to_i %> <i>per night</i>  </p>
 
 					<%= link_to "Show", listing_path(list), class:"btn btn-outline-dark" %>                 
 
