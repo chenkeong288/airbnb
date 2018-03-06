@@ -1,10 +1,16 @@
 <%= form_for @listing, :html => {:multipart => true} do |f|%>
   
-	Title: <%= f.text_field :title%> <br/>
-	Location: <%= f.text_field :location %> <br/>
-  Description: <%= f.text_field :description %> <br/>
-  Price: RM <%= f.number_field :price %> <i>per night</i> <br/>
-  <%= f.file_field :images, multiple: true%> <br/>
-	<input type="submit" name="submit">
+	<%= f.text_area :title, class:"new-listing-input", placeholder: "Enter 'Title' here"%> <br/>    
+	<%= f.text_area :location, class:"new-listing-input", placeholder: "Enter 'Location' here" %> <br/> 
+  <%= f.text_area :description, class:"new-listing-input", placeholder: "Enter 'Description' here" %> <br/>
+  <p class="price-and-image-title"> Price:  <%= f.number_field :price, class:"price-input-field", placeholder: "RM" %> <i>per night</i> </p>
+  <p class="price-and-image-title"> Images: <%= f.file_field :images, multiple: true %> </p>
+
+  <%= f.submit "Submit Posting", class:"btn btn-primary btn-lg " %>
+	<!-- <input class="new-listing-submit-button" type="submit" name="submit"> -->
 <%end%>
 
+
+
+
+<!-- **Note: Text_area make placeholder on top left of the input field -->
