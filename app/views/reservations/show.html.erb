@@ -4,12 +4,12 @@ Check-in: <%= @reservation.start_date %> <br/>
 Check-out: <%= @reservation.end_date %> <br/>
 
 Number of Guests: <%= @reservation.number_of_guests %> <br/>
-Total price: RM <%= @reservation.price.to_i %> <br/>
+Total price: RM <%= @reservation.total_price.to_i %> <br/>
 
 <%= link_to "Show All Listings", listings_path %>
 
 <%= link_to "Show My Reservations", user_reservations_path %>
 
-<%= link_to "Proceed to payment", new_payment_path %>
+
 
 

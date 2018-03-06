@@ -1,7 +1,12 @@
 <% @user_reservations.each do |res| %>
-  Title: <%= res.listing.title%><br/>
-  Location: <%= res.listing.location%><br/>
-  Check-in: <%= res.start_date%><br/>
-  Check-out: <%= res.end_date%><br/>
-  Headcount: <%= res.number_of_guests%><br/>
+  Title: <%= res.listing.title%> <br/>
+  Location: <%= res.listing.location%> <br/>
+  Check-in: <%= res.start_date%> <br/>
+  Check-out: <%= res.end_date%> <br/>
+  Headcount: <%= res.number_of_guests%> <br/>
+
+  <%= link_to "Proceed to payment", new_payment_path(res.listing_id, res.id), class:"btn btn-danger" %> <br/>
 <% end %>
+
+
+<!-- Note: new_payment_path(res.listing_id, res.id) =====> gives the listing id and reservation id to the new payment path's url. This enables rails to know and remember the new payment is for which reservation under which listing and which user. -->
