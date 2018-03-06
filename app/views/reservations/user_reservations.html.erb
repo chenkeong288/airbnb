@@ -1,12 +1,51 @@
-<% @user_reservations.each do |res| %>
-  Title: <%= res.listing.title%> <br/>
-  Location: <%= res.listing.location%> <br/>
-  Check-in: <%= res.start_date%> <br/>
-  Check-out: <%= res.end_date%> <br/>
-  Headcount: <%= res.number_of_guests%> <br/>
+<!-- Show Home Listing button -->
+<%= link_to "Show Home Listings", listings_path, class:"btn btn-outline-primary show-btn" %>
 
-  <%= link_to "Proceed to payment", new_payment_path(res.listing_id, res.id), class:"btn btn-danger" %> <br/>
-<% end %>
 
+<div class="container">
+  <div class="row">  
+
+    <% @user_reservations.each do |res| %>
+
+      <div class="col-4">
+        <div class="individual-listing-container">
+      
+              <%res.listing.images.each do |img|%>
+                <p><%= image_tag img.url, class:"rounded mx-auto d-block img" %></p>
+              <%end%>
+
+              Title: <%= res.listing.title%> <br/>
+              Location: <%= res.listing.location%> <br/>
+              Check-in: <%= res.start_date%> |  
+              Check-out: <%= res.end_date%> <br/>
+              Headcount: <%= res.number_of_guests%> <br/>
+
+              <%if res.payment_status=="No"%>
+                  Total price: RM <%= res.total_price.to_i%> <br/>         
+              <%elsif res.payment_status=="Yes"%>
+                  <!-- Don't show total price if payment is made -->
+              <%end%>
+
+
+              <%if res.payment_status=="No"%>
+                  <%= link_to "Proceed to payment", new_payment_path(res.listing_id, res.id), class:"btn btn-outline-danger" %> <br/>
+              <%elsif res.payment_status=="Yes"%>
+                  <!-- Don't show payment button if payment is made -->
+              <%end%>
+
+        </div>
+      </div>
+    
+    <%end%>
+
+  </div>
+</div>
 
 <!-- Note: new_payment_path(res.listing_id, res.id) =====> gives the listing id and reservation id to the new payment path's url. This enables rails to know and remember the new payment is for which reservation under which listing and which user. -->
+
+
+
+
+
+
+
