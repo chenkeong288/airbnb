@@ -77,7 +77,7 @@ class ListingsController < ApplicationController
 
   #strong parameter
 	def listing_params																																		#to accept user posted input confidentially
-    params.require(:listing).permit(:title, :location, :description, :price, {images: []})
+    params.require(:listing).permit(:title, :country, :location, :description, :price, {images: []})
   end
 
 

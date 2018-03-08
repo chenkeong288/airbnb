@@ -5,23 +5,9 @@
 */
 
 
-// Index
-
+// Index page
 body{
   background-color: #FCFCFC;
-}
-
-.individual-listing-container {
-  border: 1px solid #CFCECE;
-  border-radius: 3px;
-  margin-top: 6px;
-  height: 24em;
-}
-
-.img {
-  margin-top: 3px;
-  width: 97%; 
-  height:200px;
 }
 
 h1 {
@@ -41,22 +27,6 @@ h1 {
   margin-left: 45px;
 }
 
-.user-input {
-  font-weight: bold;
-}
-
-.btn {
-  font-size: 0.5em
-}
-
-.user-input, .price, .btn {
-  margin-left: 10px;
-}
-
-.price {
-  font-size: 0.85em;
-}
-
 .menu-button {
   float: right;
   margin-right: 45px;
@@ -71,6 +41,55 @@ h1 {
   margin-bottom: 10px;
   font-weight: bold;
 }
+
+.row{
+  margin-left: -130px;
+  width: 1350px;
+}
+
+.individual-listing-container {
+  // border: 1px solid #CFCECE;
+  border-radius: 3px;
+  margin-top: 6px; 
+  width:20.5em; 
+  height: 23.5em;
+}
+
+.img {
+  margin-top: 3px;
+  width: 97%; 
+  height:203px;
+}
+
+.country-location, .title {
+  font-weight: bold;
+  font-family: Circular;
+}
+
+.country-location {
+  font-size: 0.9em;
+  color:#842323;
+  margin-bottom: 1px;
+}
+
+.title {
+  font-size: 1.1em;
+  color:#525050;
+  margin-bottom: 1px;
+}
+
+.price {
+  font-size: 0.85em;
+}
+
+.btn {
+  font-size: 0.5em
+}
+
+.country-location, .title, .price, .btn {
+  margin-left: 10px;
+}
+
 
 
 // Show

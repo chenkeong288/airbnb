@@ -4,7 +4,7 @@ class Listing < ApplicationRecord
 
   has_many :reservations, dependent: :destroy
 
-  paginates_per 6          # to set number of listing per page
+  paginates_per 8          # to set number of listing per page
 
   mount_uploaders :images, AvatarUploader
 	

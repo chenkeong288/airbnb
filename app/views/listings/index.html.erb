@@ -37,17 +37,15 @@
 
 		<%@listing.each do |list|%>
 
-			<div class="col-4">
+			<div class="col-3">
 				<div class="individual-listing-container">	
 					
-
 					<%list.images.each do |img|%>
 						<p><%= image_tag img.url, class:"rounded mx-auto d-block img" %></p>
 					<%end%>
 
-
-					<p class = "user-input" ><%=list.title%></p>
-					<p class = "user-input" ><%=list.location%></p>
+					<p class = "country-location" ><%=list.country%> · <%=list.location%></p>
+					<p class = "title" ><%=list.title%></p>
 					<p class = "price" > RM <%=list.price.to_i %> <i>per night</i>  </p>
 
 					<%= link_to "Show", listing_path(list), class:"btn btn-outline-dark" %>                 
