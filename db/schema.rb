@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306032537) do
+ActiveRecord::Schema.define(version: 20180307184902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180306032537) do
     t.bigint "user_id"
     t.json "images"
     t.float "price"
+    t.string "country"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -31,8 +32,8 @@ ActiveRecord::Schema.define(version: 20180306032537) do
     t.string "start_date"
     t.string "end_date"
     t.integer "number_of_guests"
-    t.bigint "user_id"
-    t.bigint "listing_id"
+    t.bigint "user_id"                                              # putting foreign_key:true is advisable for database optimisation
+    t.bigint "listing_id"                                           # putting foreign_key:true is advisable for database optimisation
     t.float "total_price"
     t.integer "number_of_days"
     t.string "payment_status", default: "No"

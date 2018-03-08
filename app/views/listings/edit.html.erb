@@ -1,5 +1,6 @@
 <%= form_for @post_to_edit do |f|%>
   Title: <%= f.text_field :title%> <br/>
+  Country: <%= f.text_field :country %> <br/>
   Location: <%= f.text_field :location %> <br/>
   Description: <%= f.text_field :description %> <br/>
   Price: RM <%= f.number_field :price %> <i>per night</i> <br/>    
